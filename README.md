@@ -14,7 +14,7 @@
 ## Fork模板仓库
 
 
-[点击 Fork](https://github.com/elog-x/notion-hexo/fork) 该模板仓库到个人 Github 账号仓库下并 clone 到本地
+[点击 Fork](https://github.com/elog-x/yuque-hexo/fork) 该模板仓库到个人 Github 账号仓库下并 clone 到本地
 
 
 ## 安装依赖
@@ -31,7 +31,7 @@ npm install
 ## 新建 Elog 本地调试文件
 
 
-在项目根目录中复制`.elog.example.env`文件并改名为`.elog.env`，此文件将用于本地同步Notion 文档
+在项目根目录中复制`.elog.example.env`文件并改名为`.elog.env`，此文件将用于本地同步语雀 文档
 
 
 ### 配置语雀
@@ -114,29 +114,19 @@ npm run server
 ### 配置环境变量
 
 
-在本地运行时，用的是`.elog.env`文件中定义的 Notion 账号信息，而在 Github Actions 时，需要提前配置环境变量。
-
-
-在 Github 仓库的设置中找到 `Secrets  and variables`，新增仓库的环境变量`NOTION_DATABASE_ID`和`NOTION_TOKEN`和`.elog.env`保持一致即可
-
+在本地运行时，用的是`.elog.env`文件中定义的语雀账号信息，而在 Github Actions 时，需要提前配置环境变量。  
+在 Github 仓库的设置中找到 `Secrets and variables`，新增仓库的环境变量和`.elog.env`保持一致即可
+![image](https://image.1874.cool/1874/202311190147017.jpg)
 
 ![Untitled.png](https://image.1874.cool/1874/202311082348909.png)
 
 
 ### 自动化部署
 
-
-当在 Notion 中改动文档后，手动/自动触发 Github Actions流水线，会重新从 Notion 增量拉取文档，自动提交代码到 Github 仓库。
-
-
-Vercel 会实时监测仓库代码，当有新的提交时都会重新部署博客。如此就实现了自动化部署博客。
-
-
-整个流程的关键点就在于：如何手动/自动触发 Github Actions
-
-
+当在语雀中改动文档后，手动/自动触发 Github Actions流水线，会重新从语雀增量拉取文档，自动提交代码到 Github 仓库。  
+Vercel 会实时监测仓库代码，当有新的提交时都会重新部署博客。如此就实现了自动化部署博客。  
+整个流程的关键点就在于：如何手动/自动触发 Github Actions。  
 在项目.`github/workflows/sync.yaml`中已经配置了外部 API 触发 Github Actions 事件，所以只需要调用 API 触发流水线即可。
-
 
 ### 手动触发
 
