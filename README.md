@@ -1,8 +1,8 @@
-# Notion + Hexo + GitHub Actions + Vercel 博客解决方案
+# 语雀 + Hexo + GitHub Actions + Vercel 博客解决方案
 
 # 博客工具
 
-- 写作平台：Notion
+- 写作平台：语雀
 - 博客平台：[Hexo](https://hexo.io/)
 - 博客主题：[Next](https://github.com/jerryc127/hexo-theme-butterfly)
 - 博客文档同步：[Elog](https://github.com/LetTTGACO/elog)
@@ -149,7 +149,7 @@ https://serverless-api-elog.vercel.app/api/github?user=xxx&repo=xxx&event_type=d
 ```
 
 
-#### 自动触发-语雀 webhooks
+### 自动触发-语雀 webhooks
 > 需要语雀专业会员
 
 在语雀知识库 - 更多设置 - 消息推送中可配置语雀 webhooks，填写上面的 Vercel Serverless API。当文档更新时，语雀会调用这个API进行推送，进而触发
@@ -162,14 +162,4 @@ Github Actions
 
 
 如果想自定义 Elog 配置，可访问 [Elog 文档](https://elog.1874.cool/)
-
-
-# 示例
-
-
-示例仓库：[https://github.com/LetTTGACO/notion-hexo](https://github.com/LetTTGACO/notion-hexo)
-
-Notion数据库模版：[elog-hexo-template](https://1874.notion.site/867486af567f4a8897427b15ffd10b3c?v=a25aec8e27d5415e8605e43034f822bd&pvs=4)
-
-博客示例地址：[https://notion-hexo.vercel.app](https://notion-hexo.vercel.app/)
 
