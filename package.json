@@ -7,7 +7,7 @@
     "clean": "hexo clean",
     "deploy": "hexo deploy",
     "server": "hexo server",
-    "sync:local": "elog sync -e .elog.env",
+    "sync:local": "elog sync -e .elog.env --full-cache --disable-cache",
     "elog:init": "elog init",
     "sync": "elog sync",
     "elog:clean": "elog clean"

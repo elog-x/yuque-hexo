@@ -11,13 +11,13 @@
 # 博客搭建指南
 
 
-## 1. Fork模板仓库
+## Fork模板仓库
 
 
 [点击 Fork](https://github.com/elog-x/notion-hexo/fork) 该模板仓库到个人 Github 账号仓库下并 clone 到本地
 
 
-## 2. 安装依赖
+## 安装依赖
 
 
 在项目根目录下运行命令安装依赖
@@ -28,25 +28,34 @@ npm install
 ```
 
 
-## 3. 新建 Elog 本地调试文件
+## 新建 Elog 本地调试文件
 
 
 在项目根目录中复制`.elog.example.env`文件并改名为`.elog.env`，此文件将用于本地同步Notion 文档
 
 
-## 4. 配置 Notion 关键信息
+### 配置语雀
 
-
-按照[文档提示](https://elog.1874.cool/notion/gvnxobqogetukays#notion)配置 Notion 并获取 `token` 和 `databaseId`，在本地`.elog.env`中写入
-
+参考[示例知识库](https://www.yuque.com/1874w/yuque-hexo-template)
+，选择或新建语雀文档知识库，并按照[文档提示](https://elog.1874.cool/notion/gvnxobqogetukays#login)
+配置语雀并获取 `token login repo`。并在本地`.elog.env`中写入
+> Token 模式或者账号密码模式二选一即可，默认为账号密码模式，如果需要切换为 Token 模式，则修改`elog.config.js`中的`platform`为`yuque`
 
 ```text
-NOTION_TOKEN=获取的token
-NOTION_DATABASE_ID=获取的databaseId
+# 语雀（Token方式）
+YUQUE_TOKEN=获取的Token
+
+#语雀（账号密码模式）
+YUQUE_USERNAME=一般是手机号
+YUQUE_PASSWORD=登录密码
+
+# 语雀公共参数
+YUQUE_LOGIN=获取的login
+YUQUE_REPO=获取的repo
 ```
 
 
-## 5.本地调试
+## 本地调试
 
 
 在项目根目录运行同步命令
@@ -57,7 +66,7 @@ npm run sync:local
 ```
 
 
-## 6.启动 Hexo
+## 启动 Hexo
 
 
 在项目根目录运行hexo启动命令，会自动打开本地博客
@@ -68,19 +77,19 @@ npm run server
 ```
 
 
-## 7. 配置 Hexo 博客
+## 配置 Hexo 博客
 
 
-根据 [Hexo](https://hexo.io/) 文档和 [Butterfly](https://github.com/jerryc127/hexo-theme-butterfly) 主题配置文档，配置你的博客直到你满意为主，你也可以换别的主题，这里不做演示
+根据 [Hexo](https://hexo.io/) 文档和 [next](https://github.com/next-theme/hexo-theme-next) 主题配置文档，配置你的博客直到你满意为主，你也可以换别的主题，这里不做演示
 
 
-## 8. 提交代码到 github
+## 提交代码到 github
 
 
 本地访问没问题直接提交所有文件到 Github 仓库即可
 
 
-## 9. 部署到 Vercel
+## 部署到 Vercel
 
 
 注册 Vercel 账号并绑定 Github，在 Vercel 导入 该项目，Vercel 会自动识别出该 Hexo 项目，不需要改动，直接选择 Deploy 部署。部署完成会有一个 Vercel 临时域名，你也可以绑定自己的域名。
@@ -91,8 +100,9 @@ npm run server
 
 ![Untitled.png](https://image.1874.cool/1874/202311082348344.png)
 
-
-## 10. 配置 Github Actions 权限
+## 自动化同步&部署
+> 注意：在非国内CI/CD环境中使用账号密码模式登录语雀，例如Github Workflow，会导致语雀后台登录设备中出现大量美国IP，目前尚不清楚语雀是否会有安全限制措施，请谨慎使用。推荐本地同步时使用。
+### 配置 Github Actions 权限
 
 
 在 Github 仓库的设置中找到 `Actions-General`，打开流水线写入权限`Workflow permissions`
@@ -101,7 +111,7 @@ npm run server
 ![Untitled.png](https://image.1874.cool/1874/202311082349660.png)
 
 
-## 11. 配置环境变量
+### 配置环境变量
 
 
 在本地运行时，用的是`.elog.env`文件中定义的 Notion 账号信息，而在 Github Actions 时，需要提前配置环境变量。
@@ -113,7 +123,7 @@ npm run server
 ![Untitled.png](https://image.1874.cool/1874/202311082348909.png)
 
 
-## 12. 自动化部署
+### 自动化部署
 
 
 当在 Notion 中改动文档后，手动/自动触发 Github Actions流水线，会重新从 Notion 增量拉取文档，自动提交代码到 Github 仓库。
@@ -139,11 +149,14 @@ https://serverless-api-elog.vercel.app/api/github?user=xxx&repo=xxx&event_type=d
 ```
 
 
-### 自动触发
+#### 自动触发-语雀 webhooks
+> 需要语雀专业会员
 
+在语雀知识库 - 更多设置 - 消息推送中可配置语雀 webhooks，填写上面的 Vercel Serverless API。当文档更新时，语雀会调用这个API进行推送，进而触发
+Github Actions
+> 注意：语雀是国内文档平台，调用国外Vercel 的服务可能会失败，可自行部署 API
 
-可在 Notion 中结合 Slack 触发，[参考教程](https://elog.1874.cool/notion/vy55q9xwlqlsfrvk)，这里就不做进一步演示了
-
+> 注意：知识库配置了「自动发布」功能后，文档的 更新/发布 操作暂不会发送 webhooks
 
 # 自定义 Elog 配置
 

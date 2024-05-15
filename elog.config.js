@@ -1,6 +1,6 @@
 module.exports = {
   write: {
-    platform: 'yuque-pwd',
+    platform: 'yuque',
     // Token 模式（需要语雀超级会员）
     yuque: {
       token: process.env.YUQUE_TOKEN,
