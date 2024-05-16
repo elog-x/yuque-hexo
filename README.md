@@ -154,6 +154,6 @@ Github Actions
 如果想自定义 Elog 配置，可访问 [Elog 文档](https://elog.1874.cool/)
 
 ## 参考示例
-示例 Github 仓库：https://github.com/LetTTGACO/yuque-hexo
+示例 Github 仓库：https://github.com/LetTTGACO/yuque-hexo  
 示例语雀知识库：https://www.yuque.com/1874w/yuque-hexo-template  
 示例文档站点：https://yuque-hexo.vercel.app
