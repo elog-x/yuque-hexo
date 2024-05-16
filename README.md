@@ -4,7 +4,7 @@
 
 - 写作平台：语雀
 - 博客平台：[Hexo](https://hexo.io/)
-- 博客主题：[Next](https://github.com/jerryc127/hexo-theme-butterfly)
+- 博客主题：[Next](https://github.com/next-theme/hexo-theme-next)
 - 博客文档同步：[Elog](https://github.com/LetTTGACO/elog)
 - 部署平台：Vercel
 
@@ -140,7 +140,7 @@ https://serverless-api-elog.vercel.app/api/github?user=xxx&repo=xxx&event_type=d
 
 
 ### 自动触发-语雀 webhooks
-> 需要语雀专业会员
+> 需要语雀会员（普通会员即可）
 
 在语雀知识库 - 更多设置 - 消息推送中可配置语雀 webhooks，填写上面的 Vercel Serverless API。当文档更新时，语雀会调用这个API进行推送，进而触发
 Github Actions
